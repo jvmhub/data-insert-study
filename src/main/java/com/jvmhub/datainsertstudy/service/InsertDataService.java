@@ -21,8 +21,7 @@ public class InsertDataService {
   public void singleInsert(int count) {
     log.info("Single insert started for {} elements", count);
     for (int i = 0; i < count; i++) {
-      ProductEntity product = dataGenerator.randomProduct();
-      productRepository.save(product);
+      productRepository.save(dataGenerator.randomProduct());
     }
     log.info("Single insert finished");
   }
@@ -41,8 +40,7 @@ public class InsertDataService {
   public void singleTransactionalInsert(int count) {
     log.info("Single transactional insert started for {} elements", count);
     for (int i = 0; i < count; i++) {
-      ProductEntity product = dataGenerator.randomProduct();
-      productRepository.save(product);
+      productRepository.save(dataGenerator.randomProduct());
     }
     log.info("Single transactional insert finished");
   }
@@ -51,8 +49,7 @@ public class InsertDataService {
     log.info("Batch insert started for {} elements, batch size: ", count, BATCH_SIZE);
     List<ProductEntity> products = new ArrayList<>();
     for (int i = 0; i < count; i++) {
-      ProductEntity product = dataGenerator.randomProduct();
-      products.add(product);
+      products.add(dataGenerator.randomProduct());
       if (i % BATCH_SIZE == 0) {
         productRepository.saveAll(products);
         log.info("Chunk of {} elements saved", products.size());
@@ -71,8 +68,7 @@ public class InsertDataService {
     log.info("Batch transactional insert started for {} elements, batch size: ", count, BATCH_SIZE);
     List<ProductEntity> products = new ArrayList<>();
     for (int i = 0; i < count; i++) {
-      ProductEntity product = dataGenerator.randomProduct();
-      products.add(product);
+      products.add(dataGenerator.randomProduct());
       if (i % BATCH_SIZE == 0) {
         productRepository.saveAll(products);
         log.info("Chunk of {} elements saved", products.size());
