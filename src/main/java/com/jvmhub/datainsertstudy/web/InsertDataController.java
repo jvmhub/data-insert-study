@@ -50,4 +50,11 @@ public class InsertDataController {
     return ResultDto.startedAt(startTime);
   }
 
+  @GetMapping("/batch-em-clear/{count}")
+  public ResultDto batchEmClearInsert(@PathVariable int count) {
+    Instant startTime = Instant.now();
+    insertDataService.batchEmClearInsert(count);
+    return ResultDto.startedAt(startTime);
+  }
+
 }
